@@ -1,7 +1,16 @@
 const express = require('express');
 const validate = require('express-validation');
 const controller = require('../../controllers/user.controller');
+
+// NOTE: 這邊跟 node-express-boilerplate 類似
+// 會把通用的中間層放在 middlewares 資料夾中
+
 const { authorize, ADMIN, LOGGED_USER } = require('../../middlewares/auth');
+
+// NOTE: 這邊管理 Joi 驗證格式的方式與 node-express-boilerplate 類似
+// 不過個人認為 node-express-boilerplate 比較好
+// 直接用一個變數接，而不是像目前的寫法(把每個格式都接出來＠＠，這樣如果這個 route 的 api 較多，就會 import 很長一串)
+
 const {
   listUsers,
   createUser,

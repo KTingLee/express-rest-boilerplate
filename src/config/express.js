@@ -43,6 +43,10 @@ passport.use('jwt', strategies.jwt);
 passport.use('facebook', strategies.facebook);
 passport.use('google', strategies.google);
 
+// NOTE: 這邊錯誤處理機制跟 node-express-boilerplate 相似
+// 都會對錯誤進行處理，不論是沒有 route 的錯誤，或是自定義的錯誤
+// 但順序好像要換一下，應該是 notFound 先，再來才是 converter
+
 // mount api v1 routes
 app.use('/v1', routes);
 
